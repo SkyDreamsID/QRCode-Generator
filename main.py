@@ -1,48 +1,60 @@
 import qrcode
 import image
 import os
+import datetime
 
 def get_pictures_folder():
-    """Mendapatkan path folder 'Pictures'"""
+    """path folder 'Pictures' """
     if os.name == 'nt':  # Windows
         return os.path.join(os.environ['USERPROFILE'], 'Pictures')
     elif os.name == 'posix':  # Linux/macOS
         return os.path.join(os.environ['HOME'], 'Pictures')
     else:
         # OS lain
-        print("Sistem operasi tidak dikenali. Masukkan path folder Pictures secara manual (kosong untuk batal): ")
-        return input() or None  # Kosong untuk batal
+        print("OS tidak dikenali. Masukkan path folder Pictures secara manual (enter untuk batal): ")
+        return input() or None
 
 def generate_filename():
-    counter = 0
-    while True:
-        filename = f"qrcode_{counter}.png"
-        if not os.path.exists(filename):
-            return filename
-        counter += 1
-
+    now = datetime.datetime.now()
+    timestamp = now.strftime("%Y-%m-%d %H.%M")
+    return f"qrcode {timestamp}.png"
+            
 def get_filename():
     while True:
         custom_name = input("Masukkan nama file (enter untuk default): ")
-        if custom_name:
-            return f"{custom_name}.png"
-        else:
+        if not custom_name:
             return generate_filename()
+
+        filename = os.path.join(get_pictures_folder(), f"{custom_name}.png")
+        if not os.path.exists(filename):
+            return filename
+
+        # hindari duplikat
+        counter = 1
+        while True:
+            new_filename = os.path.join(get_pictures_folder(), f"{custom_name}_{counter}.png")
+            if not os.path.exists(new_filename):
+                return new_filename
+            counter += 1
         
-# HEADER
-print(f"{10*"*":<12}{"QRCode GENERATOR":^16}{10*"*":>12}")
+# Header
+print(f"{18*"=":<20}{"QRCode GENERATOR":^16}{18*"=":>20}")
 
 # Input link      
-data = input("Masukkan Link: ")
+data = input("Masukkan Link (http/https)\t: ")
 while True:
     if data.startswith("https://") or data.startswith("http://"):
+        if len(data) < 10 or len(data) < 9:
+            print("URL terlalu pendek!")
+            data = input("Masukkan link lengkap!\t\t: ")
+            continue
         break
     else:
-        data = input("Masukkan link lengkap!: ")
-        continue
+        print("URL tidak valid! Pastikan dimulai dengan http:// atau https://")
+        data = input("Masukkan link lengkap!\t\t: ")
     
 
-# generate qrcode
+# Generate qrcode
 try:
     qr = qrcode.QRCode(
         version=5,  # semakin besar semakin ruwet(banyak kotak)
@@ -57,7 +69,7 @@ try:
     filename = os.path.join(get_pictures_folder(), get_filename())
     img.save(filename)
 
-    print(f"QRCode generated and saved as: \033[32m{filename}\033[0m") # warna hijau
-    print(f"{40*"*"}")
+    print(f"QRCode generated and saved as: {filename}")
+    print(56*"=")
 except Exception as e:
     print(f"Error generating QR code: {e}")
