@@ -30,16 +30,17 @@ def get_filename():
             return generate_filename()
         
 # HEADER
-print(40*"=")
-print(f"{7*"=":<10}{"QRCode GENERATOR":^20}{7*"=":>10}")
-print(40*"=")
+print(f"{10*"*":<12}{"QRCode GENERATOR":^16}{10*"*":>12}")
 
 # Input link      
 data = input("Masukkan Link: ")
 while True:
     if data.startswith("https://") or data.startswith("http://"):
         break
-    print("Masukkan link lengkap!!!")
+    else:
+        data = input("Masukkan link lengkap!: ")
+        continue
+    
 
 # generate qrcode
 try:
@@ -56,6 +57,7 @@ try:
     filename = os.path.join(get_pictures_folder(), get_filename())
     img.save(filename)
 
-    print(f"QR code generated and saved as: {filename}")
+    print(f"QRCode generated and saved as: \033[32m{filename}\033[0m") # warna hijau
+    print(f"{40*"*"}")
 except Exception as e:
     print(f"Error generating QR code: {e}")
