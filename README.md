@@ -25,11 +25,11 @@ Setelah proses cloning selesai, masuk ke direktori repo:
 Install Dependensi
 - Windows:
 
-        pip install -r requirements.txt
+        pip install -r requirement.txt
 
 - Linux/macOS:
 
-        pip3 install -r requirements.txt
+        pip3 install -r requirement.txt
         
 Jalankan Kode
 
