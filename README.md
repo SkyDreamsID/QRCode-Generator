@@ -35,6 +35,14 @@ Jalankan Kode
 
         py main.py
         python3 main.py
+## Output Folder
+- #### windows
+    
+         %USERPROFILE%\Pictures
+    
+- #### Linux/MacOS
+    
+         HOME\Pictures
 
 ## Sekian terimakasih
 
