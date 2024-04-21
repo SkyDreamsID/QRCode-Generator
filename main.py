@@ -38,7 +38,7 @@ def get_filename():
             counter += 1
         
 # Header
-print(f"{18*"=":<20}{"QRCode GENERATOR":^16}{18*"=":>20}")
+print(f"{18*'=':<20}{"QRCode GENERATOR":^16}{18*'=':>20}")
 
 # Input link      
 data = input("Masukkan Link (http/https)\t: ")
