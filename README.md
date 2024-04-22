@@ -9,7 +9,7 @@ Project kecil hasil dari kegabutan saya dan sedikit bantuan dari [Gemini](https:
 - Simpan QRCode dalam format PNG
 
 ## Requirement
- - Python 3
+ - [Python3](https://www.python.org/downloads/)
  - PIP 
 
 ## Installation
@@ -23,7 +23,10 @@ Setelah proses cloning selesai, masuk ke direktori repo:
 
     cd QRCode-Generator
 
-Install Dependensi
+Install Dependensi, pastikan PIP terinstall
+
+    pip --version
+
 - Windows:
 
         pip install -r requirement.txt
@@ -33,9 +36,14 @@ Install Dependensi
         pip3 install -r requirement.txt
         
 Jalankan Kode
+- windows
 
-        py main.py
-        python3 main.py
+      py main.py
+  
+- Linux/MacOS
+    
+      python3 main.py
+        
 ## Output Folder
 - #### windows
     
@@ -43,9 +51,9 @@ Jalankan Kode
     
 - #### Linux/MacOS
     
-         HOME\Pictures
+         HOME\user\Pictures
 
-## Sekian terimakasih
+apabila ditemukan bug silahkan contact saya di [email](mailto:dreamsrobinson457@gmail.com?subject=(Bug%20Report)%20QRCode-Generator)
 
 [//]: # (These are reference links used in the body of this note and get stripped out when the markdown processor does its job. There is no need to format nicely because it shouldn't be seen. Thanks SO - http://stackoverflow.com/questions/4823468/store-comments-in-markdown-syntax)
 
