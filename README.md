@@ -9,7 +9,8 @@ Project kecil hasil dari kegabutan saya dan sedikit bantuan dari [Gemini](https:
 - Simpan QRCode dalam format PNG
 
 ## Requirement
- - Python versi terbaru
+ - Python 3
+ - PIP 
 
 ## Installation
 
